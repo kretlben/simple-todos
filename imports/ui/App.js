@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { withTracker } from 'meteor/react-meteor-data';
+
+import { Tasks } from '../api/tasks.js';
 
 import Task from './Task.js';
 
@@ -11,6 +15,21 @@ export default class App extends Component {
             { _id: 3, text: 'This is task 3' },
         ];
     }
+
+       <div className="container">
+    <header>
+        <h1>Todo List</h1>
+
+        <form className="new-task" onSubmit={this.handleSubmit.bind(this)} >
+            <input
+                type="text"
+                ref="textInput"
+                placeholder="Type to add new tasks"
+            />
+        </form>
+    </header>
+
+    <ul>
 
     renderTasks() {
         return this.getTasks().map((task) => (
